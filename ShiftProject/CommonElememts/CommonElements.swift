@@ -87,20 +87,6 @@ struct PasswordTextField: View {
                             lineWidth: 1
                         )
                 )
-//                    RoundedRectangle(cornerRadius: 8)
-//                        .stroke(
-//                            id == "110" ? (viewModel.isPasswordBorder ? Color.red : Color.clear) :
-//                                id == "111" ? (viewModel.isPasswordConfirmBorder ? Color.red : Color.clear) :
-//                                Color.clear,
-//                            lineWidth: 1
-//                        )
-                    //                    if id == "110" {
-                    //                            .stroke(viewModel.isPasswordBorder ? Color.red : Color.clear, lineWidth: 1)
-                    //                    } else if id == "111" {
-                    //                        RoundedRectangle(cornerRadius: 8)
-                    //                            .stroke(, lineWidth: 1)
-                    //                    }
-//                )
                 Button(action: {
                     isSecure.toggle()
                 }) {
@@ -177,12 +163,3 @@ struct DateTextField: View {
     }
 }
 
-//struct CommonElements: View {
-//    var body: some View {
-//        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-//    }
-//}
-//
-//#Preview {
-//    CommonElements()
-//}

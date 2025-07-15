@@ -9,17 +9,11 @@ import Foundation
 import Combine
 
 final class SignUpViewModel: ObservableObject {
-//загрузка основной формы
-//    @Published var isLoading: Bool = false
-//активация кнопки входа при валидной форме для загрузкм основной формы
+
+//активация кнопки входа при валидной форме для загрузки основной формы
     @Published var isButtonEnabled: Bool = false
 //контролируемые переменные
-    @Published var firstName: String = "" {
-        didSet {
-            UserDefaults.standard.set(firstName, forKey: "firstName")
-        }
-    }
-
+    @Published var firstName: String = ""
     @Published var lastName: String = ""
     @Published var dateOfBirth: Date = Date()
     @Published var passwordFirst: String = ""
@@ -53,23 +47,9 @@ final class SignUpViewModel: ObservableObject {
 
     private func isSignupActive() {
         isButtonEnabled = isNameValid && isLastNameValid && isDateValid && isPasswordValid && isPasswordMatch
-//        isButtonEnabled = isPasswordValid
     }
 
     private func validate() {
-        //        Publishers.CombineLatest4(
-        //            $firstName.map(validName),
-        //            $lastName.map(validLastName),
-        //            Publishers.CombineLatest($passwordFirst, $passwordConfirm)
-        //                .map { self.validPassword($0) && self.matchingPassword($1) },
-        //            $dateOfBirth.map { [weak self] date in
-        //                self?.validateBirthDate(date) ?? false
-        //            }
-        //        )
-        //        .dropFirst()
-        //        .map { $0 && $1 && $2 && $3 }
-        //        .assign(to: \.isButtonEnabled, on: self)
-        //        .store(in: &cancellables)
         $firstName
             .dropFirst()
             .sink { [weak self] firstName in
@@ -105,100 +85,6 @@ final class SignUpViewModel: ObservableObject {
                 self?.isSignupActive()
             }
             .store(in: &cancellables)
-//        $passwordConfirm
-//            .dropFirst()
-//            .debounce(for: 0.5, scheduler: RunLoop.main)
-//            .map { [self] passwordConfirm in
-//                return matchingPassword(passwordFirst, passwordConfirm)
-//            }
-//            .assign(to: \.isPasswordMatch, on: self)
-//            .store(in: &cancellables)
-
-
-        //        Publishers.CombineLatest($firstName, $lastName)
-        //            .map { [self] firstName, lastName in
-        //                print("CHECK firstName:", validName(firstName))
-        ////                print("CHECK lastName:", validName(lastName))
-        ////                print("CHECK:", validName(firstName) && validName(lastName))
-        //                return validName(firstName) && validName(lastName)
-        //            }
-        //            .assign(to: \.isButtonEnabled, on: self)
-        //            .store(in: &cancellables)
-        //    }
-        //        $passwordConfirm
-        //            .dropFirst()
-        //            .debounce(for: 0.5, scheduler: RunLoop.main)
-        //            .map { [self] passwordConfirm in
-        //                return matchingPassword(passwordFirst, passwordConfirm)
-        //            }
-        //            .assign(to: \.isPasswordMatch, on: self)
-        //            .store(in: &cancellables)
-        //        Publishers.CombineLatest($passwordFirst, $passwordConfirm)
-        //            .dropFirst()
-        //            .debounce(for: 0.5, scheduler: RunLoop.main)
-        //            .map { [self] passwordFirst, passwordConfirm in
-        //                return matchingPassword(passwordFirst, passwordConfirm)
-        //            }
-        //            .assign(to: \.isPasswordMatch, on: self)
-        //            .store(in: &cancellables)
-        //        $firstName
-        //            .dropFirst()
-        ////            .debounce(for: 0.5, scheduler: RunLoop.main)
-        //            .map(validName)
-        //            .assign(to: \.isNameValid, on: self)
-        //            .store(in: &cancellables)
-        //        $lastName
-        //            .dropFirst()
-        ////            .debounce(for: 0.5, scheduler: RunLoop.main)
-        //            .map(validLastName)
-        //            .assign(to: \.isLastNameValid, on: self)
-        //            .store(in: &cancellables)
-        //        $passwordFirst
-        //            .dropFirst()
-        //            .debounce(for: 0.5, scheduler: RunLoop.main)
-        //            .map(validPassword)
-        //            .assign(to: \.isPasswordValid, on: self)
-        //            .store(in: &cancellables)
-        //        $passwordConfirm
-        //            .dropFirst()
-        //            .debounce(for: 0.5, scheduler: RunLoop.main)
-        //            .map(matchingPassword)
-        //            .assign(to: \.isPasswordMatch, on: self)
-        //            .store(in: &cancellables)
-        //        Publishers.CombineLatest5($firstName, $lastName, $dateOfBirth,  $passwordFirst, $passwordConfirm)
-        //        Publishers.CombineLatest4($isNameValid, $isLastNameValid, $isPasswordValid, $isPasswordMatch)
-        //            .dropFirst()
-        ////            .debounce(for: 0.5, scheduler: RunLoop.main)
-        ////            .map { $0 && $1 && $2 && $3 }
-        //
-        //            .map { [self] isNameValid, isLastNameValid, isPasswordValid, isPasswordMatch in
-        //                return validName(firstName) && validLastName(lastName) && validPassword(passwordFirst) && matchingPassword(passwordConfirm)
-        //            }
-        ////            .map { isNameValid, isLastNameValid, isPasswordValid, isPasswordMatch in
-        ////                return isNameValid && isLastNameValid && isPasswordValid && isPasswordMatch
-        ////            }
-        //            .assign(to: \.isButtonEnabled, on: self)
-        //            .store(in: &cancellables)
-
-        //        Publishers.CombineLatest3($firstName, $lastName, $passwordFirst)
-        //            .dropFirst()
-        //            .debounce(for: 0.5, scheduler: RunLoop.main)
-        //            .map { [self] firstName, lastName, passwordFirst in
-        ////                print("CHECK:", validName(firstName) && validName(lastName) && validPassword(passwordFirst))
-        //                return validName(firstName) && validName(lastName) && validPassword(passwordFirst)
-        ////                return validName(firstName) && validName(lastName) && isPasswordValid
-        //            }
-        //            .assign(to: \.isButtonEnabled, on: self)
-        //            .store(in: &cancellables)
-        //        Publishers.CombineLatest4(
-        //            $firstName.map(validName),
-        //            $lastName.map(validLastName),
-        //            $passwordFirst.map(validPassword),  // Без debounce!
-        //            $passwordConfirm.map(matchingPassword)  // Без debounce!
-        //        )
-        //        .map { $0 && $1 && $2 && $3 }
-        //        .assign(to: \.isButtonEnabled, on: self)
-        //        .store(in: &cancellables)
     }
 
 
@@ -230,7 +116,6 @@ final class SignUpViewModel: ObservableObject {
     }
 
     private func validPassword(_ password: String) {
-        //        print("in validPassword", password)
 
         let forbiddenPasswords = [
             "password", "123456", "qwerty", "admin", "welcome",
@@ -288,11 +173,6 @@ final class SignUpViewModel: ObservableObject {
         matchingPassword(passwordConfirm)
     }
 
-//    func signUp() {
-//        isLoading = true
-////        errorMessagePassword = ""
-//    }
-
     func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy"
@@ -300,117 +180,4 @@ final class SignUpViewModel: ObservableObject {
     }
 }
 
-// Old methods code
-//    private func validateBirthDate(_ date: Date) -> Bool {
-//        if date <= Date.now {
-//            isDateBorder = false
-//            errorMessageDate = ""
-//            return true
-//        } else {
-//            isDateBorder = true
-//            errorMessageDate = "Нельзя указать дату в будущем"
-//            print(errorMessageDate)
-//            return false
-//        }
-//    }
-
-//    private func validName(_ name: String) -> Bool {
-//        //        print("name: \(name)")
-//        let isNameValid = NSPredicate(format: "SELF MATCHES %@", nameRegex).evaluate(with: name)
-//        //        print("isNameValid", isNameValid)
-//        if isNameValid {
-//            isNameBorder = false
-//            errorMessageFirstName = ""
-//        } else {
-//            isNameBorder = true
-//            errorMessageFirstName = "Только буквы, минимум 2 символа, без пробелов"
-//        }
-//        return isNameValid
-//        //        return !name.isEmpty
-//    }
-
-//    private func validLastName(_ name: String) -> Bool {
-//        //        print("name: \(name)")
-//        //        let nameRegex = "^[а-яА-Яa-zA-Z]{2,}$"
-//        let isNameValid = NSPredicate(format: "SELF MATCHES %@", nameRegex).evaluate(with: name)
-//        //        print("isNameValid", isNameValid)
-//        if isNameValid {
-//            isLastNameBorder = false
-//            errorMessageLastName = ""
-//        } else {
-//            isLastNameBorder = true
-//            errorMessageLastName = "Только буквы, минимум 2 символа, без пробелов"
-//        }
-//        return isNameValid
-//        //        return !name.isEmpty
-//    }
-
-//    private func validPassword(_ password: String) -> Bool {
-//        //        print("in validPassword", password)
-//
-//        let forbiddenPasswords = [
-//            "password", "123456", "qwerty", "admin", "welcome",
-//            "login", "abc123", "letmein", "master", "hello123"
-//        ]
-//
-//        //        let keyboardSequences = [
-//        //            "qwertyuiop", "asdfghjkl", "zxcvbnm",
-//        //            "йцукенгшщзхъ", "фывапролджэ", "ячсмитьбю",
-//        //            "1234567890"
-//        //        ]
-//
-//        if password.count == 0 {
-//            errorMessagePassword = ""
-//            //            print("pass is empty")
-//            isPasswordBorder = true
-//            return false
-//        }
-//
-//        guard password.count >= 6 else {
-//            errorMessagePassword = "Пароль должен содержать минимум 6 символов"
-//            //            print(errorMessagePassword)
-//            isPasswordBorder = true
-//            return false
-//        }
-//
-//        // 2. Проверка на запрещенные пароли
-//        guard !forbiddenPasswords.contains(password.lowercased()) else {
-//            errorMessagePassword = "Этот пароль слишком распространен"
-//            //            print(errorMessagePassword)
-//            isPasswordBorder = true
-//            return false
-//        }
-//
-//        // 3. Проверка регистров
-//        let hasUppercase = password.contains(where: { $0.isUppercase })
-//        let hasLowercase = password.contains(where: { $0.isLowercase })
-//        guard hasUppercase && hasLowercase else {
-//            errorMessagePassword = "Используйте буквы в обоих регистрах"
-//            //            print(errorMessagePassword)
-//            isPasswordBorder = true
-//            return false
-//        }
-//
-//        //        let passwordRegex = "^[\\p{L}\\p{N}\\p{P}\\p{S}]{5,}$"
-//        //        let isPasswordValid = NSPredicate(format: "SELF MATCHES %@", passwordRegex).evaluate(with: password)
-//        //        print("isPasswordValid", isPasswordValid)
-//        //        return isPasswordValid
-//        errorMessagePassword = ""
-//        isPasswordBorder = false
-//        return true
-//    }
-//    private func matchingPassword(_ password: String) -> Bool {
-//
-//        //        print("in matchingPassword", passwordFirst, password)
-//        if password == passwordFirst {
-//            isPasswordConfirmBorder = false
-//            errorMessageConfirmPassword = ""
-//            return true
-//        } else {
-//            isPasswordConfirmBorder = true
-//            errorMessageConfirmPassword = "Пароли не совпадают"
-//            print(errorMessageConfirmPassword)
-//            return false
-//        }
-//    }
 

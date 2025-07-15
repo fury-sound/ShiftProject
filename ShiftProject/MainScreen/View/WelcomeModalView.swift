@@ -20,7 +20,6 @@ struct WelcomeModalView: View {
             .padding()
 
             VStack {
-                
                 Text("Привет, \(firstName ?? "")!")
                     .font(.title)
                     .padding(.bottom, 20)

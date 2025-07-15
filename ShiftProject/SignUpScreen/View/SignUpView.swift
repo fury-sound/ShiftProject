@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SignUpView: View {
-    @StateObject var viewModel = SignUpViewModel()
+    @ObservedObject var viewModel: SignUpViewModel
     @State private var isShowingMainView = false
 
     var body: some View {
@@ -33,8 +33,10 @@ struct SignUpView: View {
                     WarningText(textToShow: $viewModel.errorMessageConfirmPassword)
 
                     HStack {
-                        NavigationLink(destination: MainView().navigationBarBackButtonHidden(true),
-                                       isActive: $isShowingMainView) {
+                        Button(action: {
+                            UserDefaults.standard.set(viewModel.firstName, forKey: "firstName")
+                            isShowingMainView = true
+                        }) {
                             HStack(spacing: 8) {
                                 Text("Регистрация")
                                     .font(.system(size: 20, weight: .medium))
@@ -45,27 +47,36 @@ struct SignUpView: View {
                             .frame(maxWidth: .infinity)
                             .padding()
                             .background(viewModel.isButtonEnabled ? .green : .gray.opacity(0.5))
-                            .frame(maxWidth: .infinity)
                             .clipShape(RoundedRectangle(cornerRadius: 15))
                             .overlay(
                                 RoundedRectangle(cornerRadius: 16)
                                     .stroke(.blue, lineWidth: 2)
                             )
                         }
+                        .disabled(!viewModel.isButtonEnabled)
+                        .background(
+                            NavigationLink(
+                                destination: MainView().navigationBarBackButtonHidden(true),
+                                isActive: $isShowingMainView,
+                                label: { EmptyView() }
+                            )
+                            .hidden()
+                        )
                     }
                     .padding(.vertical, 25)
-                    .disabled(!viewModel.isButtonEnabled)
-                    
                 }
                 .padding(.horizontal, 16)
                 .padding(.bottom, 36)
             }
             .padding(.top)
         }
-        //        .ignoresSafeArea(.keyboard)
+        .onAppear() {
+            UserDefaults.standard.removeObject(forKey: "firstName")
+        }
     }
 }
 
 #Preview {
-    SignUpView()
+    let viewModel = SignUpViewModel()
+    SignUpView(viewModel: viewModel)
 }

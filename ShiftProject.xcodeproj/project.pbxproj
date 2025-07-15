@@ -6,11 +6,27 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		B983CA222E25876D00A4F9D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9872E782E1DAF05007D659D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9872E7F2E1DAF05007D659D;
+			remoteInfo = ShiftProject;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		B983CA1E2E25876D00A4F9D9 /* ShiftProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShiftProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9872E802E1DAF05007D659D /* ShiftProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShiftProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		B983CA1F2E25876D00A4F9D9 /* ShiftProjectTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ShiftProjectTests;
+			sourceTree = "<group>";
+		};
 		B9872E822E1DAF05007D659D /* ShiftProject */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = ShiftProject;
@@ -19,6 +35,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B983CA1B2E25876D00A4F9D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B9872E7D2E1DAF05007D659D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -33,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				B9872E822E1DAF05007D659D /* ShiftProject */,
+				B983CA1F2E25876D00A4F9D9 /* ShiftProjectTests */,
 				B9872E812E1DAF05007D659D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				B9872E802E1DAF05007D659D /* ShiftProject.app */,
+				B983CA1E2E25876D00A4F9D9 /* ShiftProjectTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,6 +73,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B983CA1D2E25876D00A4F9D9 /* ShiftProjectTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B983CA242E25876D00A4F9D9 /* Build configuration list for PBXNativeTarget "ShiftProjectTests" */;
+			buildPhases = (
+				B983CA1A2E25876D00A4F9D9 /* Sources */,
+				B983CA1B2E25876D00A4F9D9 /* Frameworks */,
+				B983CA1C2E25876D00A4F9D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B983CA232E25876D00A4F9D9 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B983CA1F2E25876D00A4F9D9 /* ShiftProjectTests */,
+			);
+			name = ShiftProjectTests;
+			packageProductDependencies = (
+			);
+			productName = ShiftProjectTests;
+			productReference = B983CA1E2E25876D00A4F9D9 /* ShiftProjectTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		B9872E7F2E1DAF05007D659D /* ShiftProject */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B9872E8B2E1DAF05007D659D /* Build configuration list for PBXNativeTarget "ShiftProject" */;
@@ -80,6 +128,10 @@
 				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
+					B983CA1D2E25876D00A4F9D9 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = B9872E7F2E1DAF05007D659D;
+					};
 					B9872E7F2E1DAF05007D659D = {
 						CreatedOnToolsVersion = 16.4;
 					};
@@ -100,11 +152,19 @@
 			projectRoot = "";
 			targets = (
 				B9872E7F2E1DAF05007D659D /* ShiftProject */,
+				B983CA1D2E25876D00A4F9D9 /* ShiftProjectTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B983CA1C2E25876D00A4F9D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B9872E7E2E1DAF05007D659D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -115,6 +175,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B983CA1A2E25876D00A4F9D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B9872E7C2E1DAF05007D659D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,7 +191,61 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		B983CA232E25876D00A4F9D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9872E7F2E1DAF05007D659D /* ShiftProject */;
+			targetProxy = B983CA222E25876D00A4F9D9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		B983CA252E25876D00A4F9D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 525NQN8N76;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.zvonarevva.shift.ShiftProjectTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShiftProject.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ShiftProject";
+			};
+			name = Debug;
+		};
+		B983CA262E25876D00A4F9D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 525NQN8N76;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.zvonarevva.shift.ShiftProjectTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShiftProject.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ShiftProject";
+			};
+			name = Release;
+		};
 		B9872E892E1DAF05007D659D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -268,7 +389,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.zvonarevva.evercoin.ShiftProject;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.zvonarevva.shift.ShiftProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -302,7 +423,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.zvonarevva.evercoin.ShiftProject;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.zvonarevva.shift.ShiftProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -317,6 +438,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B983CA242E25876D00A4F9D9 /* Build configuration list for PBXNativeTarget "ShiftProjectTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B983CA252E25876D00A4F9D9 /* Debug */,
+				B983CA262E25876D00A4F9D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B9872E7B2E1DAF05007D659D /* Build configuration list for PBXProject "ShiftProject" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -7,13 +7,18 @@
 
 import Foundation
 
-final class NetworkService {
-    @MainActor static let shared = NetworkService()
+protocol NetworkServiceProtocol {
+    func fetchRequest() async throws -> [NetworkModel]
+}
+
+final class NetworkService: NetworkServiceProtocol {
+    static var shared = NetworkService()
 
     init() {}
 
     let url = URL(string: "https://fakestoreapi.com/products")
 
+    @MainActor
     func fetchRequest() async throws -> [NetworkModel] {
 
         guard let url else {

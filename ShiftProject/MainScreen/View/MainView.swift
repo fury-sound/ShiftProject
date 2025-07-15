@@ -8,36 +8,32 @@
 import SwiftUI
 
 struct MainView: View {
-    private let networkService = NetworkService.shared
-    //    @State private var storage = UserDefaults()
-    @State private var tableData: [NetworkModel] = []
-    @AppStorage("firstName") var firstName: String?
-    @State private var showingWelcome = false
+    private let networkService: NetworkServiceProtocol
+    @State internal var tableData: [NetworkModel] = []
+    @State internal var showingWelcome = false
     @Environment(\.dismiss) private var dismiss
-
     let imageSize: CGFloat = 100
 
+    init(networkService: NetworkServiceProtocol = NetworkService.shared) {
+        self.networkService = networkService
+    }
+
     var body: some View {
-        //        Text("Hello, \(firstName ?? "")!")
-//        HStack(alignment: .center) {
-            Button(action: {
+        Button(action: {
+            if UserDefaults.standard.string(forKey: "firstName") != nil {
                 showingWelcome = true
-            }) {
-                Text("Приветствие")
-                    .font(.system(size: 15, weight: .medium))
-                    .foregroundStyle(.primary)
-//                    .padding(.vertical, 10)
-//                    .multilineTextAlignment(.center)
-//                    .background(.red)
             }
-            .padding(10)
-            .buttonStyle(.bordered)
-            .sheet(isPresented: $showingWelcome) {
-                WelcomeModalView()
-            }
-
-//        }
-
+        }) {
+            Text("Приветствие")
+                .font(.system(size: 15, weight: .medium))
+                .foregroundStyle(.primary)
+        }
+        .padding(10)
+        .buttonStyle(.bordered)
+        .sheet(isPresented: $showingWelcome) {
+            WelcomeModalView()
+        }
+        // Для простоты использован List
         List(tableData) { item in
             HStack {
                 if let imageUrl = item.imageUrl {
@@ -70,6 +66,7 @@ struct MainView: View {
         }
         .listStyle(PlainListStyle())
         .onAppear {
+//            removeNameKey()
             Task {
                 do {
                     tableData = try await networkService.fetchRequest()

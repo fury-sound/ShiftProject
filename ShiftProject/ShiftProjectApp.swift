@@ -9,14 +9,14 @@ import SwiftUI
 
 @main
 struct ShiftProjectApp: App {
-    
+    @StateObject var viewModel = SignUpViewModel()
+
     var body: some Scene {
         WindowGroup {
-//            ContentView()
             if UserDefaults.standard.string(forKey: "firstName") != nil {
                 MainView()
             } else {
-                SignUpView()
+                SignUpView(viewModel: viewModel)
             }
         }
     }
