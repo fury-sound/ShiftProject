@@ -1,4 +1,4 @@
-# Проект для курсов ШИФТ на осень 2025 г. 
+# Проект для курса ШИФТ по iOS, осень 2025 г. 
 
 ## Стек проекта - SwiftUI, MVVM-C, Unit testing, Swift Testing, REST API 
 ### API: https://fakestoreapi.com
